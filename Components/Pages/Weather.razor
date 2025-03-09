@@ -15,14 +15,27 @@ else
             <li>@(question.index + 1). @question.q.QuestionText</li>
         }
     </ul>
+
+    <ul>
+        @foreach (var question in top2questions.Select((q, index) => new { q, index }))
+        {
+            <li>@(question.index + 15). @question.q.QuestionText</li>
+        }
+    </ul>
 }
 
 @code {
     private List<SYO_App.Models.Question> questions;
+    private List<SYO_App.Models.Question> top2questions;
+    
 
     protected override async Task OnInitializedAsync()
     {
         // Asynchronously fetch questions from the database
         questions = await DataService.GetQuestionsAsync();
+
+        top2questions = await DataService.GetTop2QuestionsAsync();
     }
+
+
 }
