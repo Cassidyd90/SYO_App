@@ -8,6 +8,7 @@ namespace SYO_App.Data
     {
         Task<List<Question>> GetQuestionsAsync();
         Task<List<Question>> GetTop2QuestionsAsync();
+        Task<List<QuestionsDaily>> GetQuestionsDailyAsync();
     }
 
     public class DataService : IDataService
@@ -27,6 +28,11 @@ namespace SYO_App.Data
         public async Task<List<Question>> GetTop2QuestionsAsync()
         {
             return await _dbContext.Questions.Take(2).ToListAsync();
+        }
+
+        public async Task<List<QuestionsDaily>> GetQuestionsDailyAsync()
+        {
+            return await _dbContext.QuestionsDaily.ToListAsync();
         }
     }
 }

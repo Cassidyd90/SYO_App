@@ -22,12 +22,14 @@ else
             <li>@(question.index + 15). @question.q.QuestionText</li>
         }
     </ul>
+
 }
 
 @code {
     private List<SYO_App.Models.Question> questions;
     private List<SYO_App.Models.Question> top2questions;
-    
+    private List<SYO_App.Models.QuestionsDaily> getQuestionsDaily;
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -35,6 +37,8 @@ else
         questions = await DataService.GetQuestionsAsync();
 
         top2questions = await DataService.GetTop2QuestionsAsync();
+
+        getQuestionsDaily = await DataService.GetQuestionsDailyAsync();
     }
 
 

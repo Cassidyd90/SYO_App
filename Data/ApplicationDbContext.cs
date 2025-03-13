@@ -8,6 +8,8 @@ namespace SYO_App.Data
         // DbSets represent tables in your database
         public DbSet<Question> Questions { get; set; }
 
+        public DbSet<QuestionsDaily> QuestionsDaily { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
