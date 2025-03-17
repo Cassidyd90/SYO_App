@@ -6,9 +6,8 @@ namespace SYO_App.Data
 {
     public interface IDataService
     {
-        Task<List<Question>> GetQuestionsAsync();
-        Task<List<Question>> GetTop2QuestionsAsync();
-        Task<List<QuestionsDaily>> GetQuestionsDailyAsync();
+        Task<List<Question>> GetAllQuestionsAsync();
+        Task<List<User>> GetAllUsersAsync();
     }
 
     public class DataService : IDataService
@@ -20,20 +19,21 @@ namespace SYO_App.Data
             _dbContext = dbContext;
         }
 
-        public async Task<List<Question>> GetQuestionsAsync()
+
+        public async Task<List<Question>> GetAllQuestionsAsync()
         {
-            return await _dbContext.Questions.ToListAsync();
+            return await _dbContext.QuestionsAll.ToListAsync();
         }
 
-        public async Task<List<Question>> GetTop2QuestionsAsync()
+
+        public async Task<List<User>> GetAllUsersAsync()
         {
-            return await _dbContext.Questions.Take(2).ToListAsync();
+            return await _dbContext.Users.ToListAsync();
         }
 
-        public async Task<List<QuestionsDaily>> GetQuestionsDailyAsync()
-        {
-            return await _dbContext.QuestionsDaily.ToListAsync();
-        }
+
+
+
     }
 }
 

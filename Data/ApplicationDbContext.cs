@@ -5,10 +5,10 @@ namespace SYO_App.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        // DbSets represent tables in your database
-        public DbSet<Question> Questions { get; set; }
+        public DbSet<Question> QuestionsAll { get; set; }
 
-        public DbSet<QuestionsDaily> QuestionsDaily { get; set; }
+        public DbSet<User> Users { get; set; }
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

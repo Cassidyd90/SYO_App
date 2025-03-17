@@ -1,0 +1,34 @@
+﻿@page "/users"
+@inject SYO_App.Data.IDataService DataService
+
+
+<h3>Users</h3>
+
+
+@if (getAllUsers == null)
+{
+	<p><em>Loading...</em></p>
+}
+else
+{
+
+	<ul>
+		@foreach (var user in getAllUsers)
+		{
+			<li>@user.UserID : @user.UserName : @user.UserEmail</li>
+		}
+	</ul>
+
+}
+@code {
+	private List<SYO_App.Models.User>? getAllUsers;
+
+
+	protected override async Task OnInitializedAsync()
+	{
+
+		getAllUsers = await DataService.GetAllUsersAsync();
+
+
+	}
+}
